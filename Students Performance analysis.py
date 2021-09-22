@@ -108,7 +108,7 @@ def gender_question(df):
     print('\nCalculating The Most Popular gender type ...\n')
     common_gender=df["gender"].value_counts()
     print ('common gender in data is \t ( {0} ) '.format(common_gender.index[0]))
-    plt.pie(common_gender[0:len(common_gender)],labels=common_gender.index,shadow=True,explode=[0.05,0.05],autopct='%1.1f%%')
+    plt.pie(common_gender[0:len(common_gender)],labels=common_gender.index,shadow=True,explode=len(common_gender)*[0.05],autopct='%1.1f%%')
     plt.title("common gender")
     plt.axis("equal")
     plt.show()
@@ -137,7 +137,7 @@ def ploe_ques(df):
      common_level=df["parental level of education"].value_counts()
      print("common level in parental level of education is\n\t ( {0} )".format(common_level.index[0]))
      print("less level in parental level of educationis\n\t ( {0} )".format(common_level.index[len( common_level)-1]))
-     plt.pie(common_level[0:len(common_level)],labels=common_level.index,shadow=True,explode=[0.05,0.05,0.05,0.05,0.05,0.05],autopct='%1.1f%%')
+     plt.pie(common_level[0:len(common_level)],labels=common_level.index,shadow=True,explode=len(common_level)*[0.05],autopct='%1.1f%%')
      plt.title("common level")
      plt.axis("equal")
      plt.show()
@@ -149,9 +149,10 @@ def lunch_ques(df):
      print("\nCalculating the most popular lunch type\n")
      common_type=df["lunch"].value_counts()
      print("common type in lunch is\n\t ( {0} )".format(common_type.index[0]))
-     plt.pie(common_type[0:len(common_type)],labels=common_type.index,shadow=True,explode=[0.05,0.05],autopct='%1.1f%%')
+     plt.pie(common_type[0:len(common_type)],labels=common_type.index,shadow=True,explode=len(common_type)*[0.05],autopct='%1.1f%%')
      plt.title("common type")
      plt.axis("equal")
+     plt.show()
      print("-"*40)
 
 def Tcp_ques(df):
@@ -161,9 +162,10 @@ def Tcp_ques(df):
      print("common type in test preparation course is\t ( {0} )\n".format(common_type.index[0]))
      print("number of students that {0}  test preparation course is\t ( {1} )\n".format(common_type.index[0],common_type[0]))
      print("number of students that {0}  test preparation course is\t ( {1} )\n".format(common_type.index[len(common_type)-1],common_type[len(common_type)-1]))
-     plt.pie(common_type[0:len(common_type)],labels=common_type.index,shadow=True,explode=[0.05,0.05],autopct='%1.1f%%')
+     plt.pie(common_type[0:len(common_type)],labels=common_type.index,shadow=True,explode=len(common_type)*[0.05],autopct='%1.1f%%')
      plt.title("test preparation course")
      plt.axis("equal")
+     plt.show()
      print("-"*40)
  
 def material_grads(material_name,df):
@@ -177,13 +179,14 @@ def material_grads(material_name,df):
      print("min score in student {0} is\t     ( {1} )".format(material_name,min_score))
      print("number of students get max score is\t     ( {0} )".format(common_score[max_score]))
      print("number of students get min score is\t     ( {0} )".format(common_score[min_score]))
-     x=common_score.index[0:5]
-     y=common_score[0:5]
-     plt.bar(x,y,color="b",width=0.9)
-     plt.title("common {0}".format(material_name))
-     for xx,yy in zip(x,y):
-         plt.text(xx,yy,yy)
-     plt.show()
+     if(material_name!="math score"):
+         x=common_score.index[0:5]
+         y=common_score[0:5]
+         plt.bar(x,y,color="c",width=0.9)
+         plt.title("common {0}".format(material_name))
+         for xx,yy in zip(x,y):
+             plt.text(xx,yy,yy)
+         plt.show()
      print("-"*40)
     
 def math_ques(df):
